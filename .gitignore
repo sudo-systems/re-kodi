@@ -1,0 +1,10 @@
+nbproject
+installers/osx/ReKodi-darwin-x64
+installers/win/ReKodi-win32-ia32
+installers/linux/ReKodi-linux-ia32
+installers/linux/ReKodi-linux-x64
+node_modules
+bower_components
+.DS_Store
+.DS_Store?
+._*
