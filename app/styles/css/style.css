@@ -1,10 +1,11 @@
 #mainMenu .md-button {
   width: 100%;
   text-align: left;
-  line-height: 40px; }
+  line-height: 40px;
+  margin: 0; }
   #mainMenu .md-button .mdi {
     color: #666;
-    font-size: 26px;
-    line-height: 40px; }
+    font-size: 20px;
+    margin-right: 6px; }
 
 /*# sourceMappingURL=style.css.map */
