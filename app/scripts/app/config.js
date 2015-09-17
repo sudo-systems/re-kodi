@@ -10,20 +10,6 @@ ReKodi.config(['$stateProvider', '$urlRouterProvider',
         pageTitle: 'Recently Added',
         menuIcon: 'mdi-newspaper'
       }
-    }).state('now-playing', {
-      url: '/now-playing',
-      templateUrl: 'views/partials/now-playing.html',
-      data : { 
-        pageTitle: 'Now playing',
-        menuIcon: 'mdi-play-box-outline'
-      }
-    }).state('playlist', {
-      url: '/playlist',
-      templateUrl: 'views/partials/playlist.html',
-      data : { 
-        pageTitle: 'Playlists',
-        menuIcon: 'mdi-format-list-bulleted'
-      }
     }).state('music', {
       url: '/music',
       templateUrl: 'views/partials/music.html',
@@ -52,12 +38,40 @@ ReKodi.config(['$stateProvider', '$urlRouterProvider',
         pageTitle: 'Videos',
         menuIcon: 'mdi-video' 
       }
+    }).state('now-playing', {
+      url: '/now-playing',
+      templateUrl: 'views/partials/now-playing.html',
+      data : { 
+        pageTitle: 'Now playing',
+        menuIcon: 'mdi-play-box-outline'
+      }
+    }).state('playlist', {
+      url: '/playlist',
+      templateUrl: 'views/partials/playlist.html',
+      data : { 
+        pageTitle: 'Playlists',
+        menuIcon: 'mdi-format-list-bulleted'
+      }
     }).state('settings', {
       url: '/settings',
       templateUrl: 'views/partials/settings.html',
       data : { 
         pageTitle: 'Settings',
         menuIcon: 'mdi-settings' 
+      }
+    }).state('help', {
+      url: '/help',
+      templateUrl: 'views/partials/help.html',
+      data : { 
+        pageTitle: 'Help',
+        menuIcon: 'mdi-help-circle' 
+      }
+    }).state('about', {
+      url: '/about',
+      templateUrl: 'views/partials/about.html',
+      data : { 
+        pageTitle: 'About',
+        menuIcon: 'mdi-information' 
       }
     });
   }
