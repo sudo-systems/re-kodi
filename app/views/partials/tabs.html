@@ -1,0 +1,12 @@
+<md-tabs md-selected="data.selectedIndex" md-dynamic-height="true" md-swipe-content="true">
+  <md-tab ng-repeat="tab in tabs track by $index">
+    <md-tab-label>
+      <i class="mdi" ng-class="tab.icon"></i> {{tab.label}}
+    </md-tab-label>
+    <md-tab-body>
+      <md-content class="md-padding">
+        <div ng-include="tab.content"></div>
+      </md-content>
+    </md-tab-body>
+  </md-tab>
+</md-tabs>

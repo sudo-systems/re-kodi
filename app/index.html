@@ -33,6 +33,8 @@
     <!-- app:Controllers -->
     <script src="./scripts/app/controllers/app.js"></script>
     <script src="./scripts/app/controllers/main-menu.js"></script>
+    <script src="./scripts/app/controllers/recently-added.js"></script>
+    <script src="./scripts/app/controllers/music.js"></script>
     <!-- end:Controllers -->
     
     <!-- app:Services -->
@@ -41,28 +43,30 @@
   <body layout="column" ng-controller="AppCtrl">
     <md-toolbar layout="row">
       <div class="md-toolbar-tools">
-        <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
+        <md-button ng-click="toggleSidenav('left')" class="md-icon-button">
           <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
         </md-button>
         <h1>ReKodi</h1>
       </div>
     </md-toolbar>
     <div layout="row" flex>
-        <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
-          <md-list class="main-menu" ng-controller="MainMenuCtrl">
-            <md-item ng-repeat="item in items">
-              <md-item-content>
-                <i class="mdi" ng-class="{{item.icon.name}}"></i>
-                <md-button ng-click="open(item.sref)">
-                  {{item.title}}
-                </md-button>
-              </md-item-content>
-            </md-item>
-          </md-list>
-        </md-sidenav>
-        <div layout="column" flex id="content">
-          <md-content layout="column" flex class="md-padding" ui-view></md-content>
-        </div>
+      <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" id="mainMenu">
+        <md-toolbar class="md-theme-indigo">
+          <h1 class="md-toolbar-tools">Menu</h1>
+        </md-toolbar>
+        <md-list ng-controller="MainMenuCtrl">
+          <md-item ng-repeat="item in items track by $index">
+            <md-item-content>
+              <md-button ng-click="open(item.sref)" aria-label="{{item.title}}">
+                <i class="mdi" ng-class="item.icon"></i> {{item.title}}
+              </md-button>
+            </md-item-content>
+          </md-item>
+        </md-list>
+      </md-sidenav>
+      <div layout="column" flex id="content">
+        <md-content layout="column" flex ui-view></md-content>
+      </div>
     </div>
   </body>
 </html>

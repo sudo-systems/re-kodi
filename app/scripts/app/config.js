@@ -18,6 +18,9 @@ ReKodi.config(['$stateProvider', '$urlRouterProvider',
     }).state('videos', {
       url: '/videos',
       templateUrl: 'views/partials/videos.html'
+    }).state('playlist', {
+      url: '/playlist',
+      templateUrl: 'views/partials/playlist.html'
     });
   }
 ]);

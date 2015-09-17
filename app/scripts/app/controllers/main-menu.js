@@ -1,49 +1,34 @@
-ReKodi.controller('MainMenuCtrl', ['$scope', '$state',
-  function($scope, $state){
-    var iconConfig = {
-      color: '#333',
-      size: '36'
-    };
-    
+ReKodi.controller('MainMenuCtrl', ['$scope', '$state', '$mdSidenav',
+  function($scope, $state, $mdSidenav){
     $scope.items = [{
-      icon: {
-        name: '',
-        color: iconConfig.color
-      },
+      icon: 'mdi-newspaper',
       title: 'Recently added',
       sref: 'recently-added'
     }, {
-      icon: {
-        name: 'mdi-music-box-outline',
-        color: iconConfig.color
-      },
+      icon: 'mdi-music-box-outline',
       title: 'Music',
       sref: 'music'
     }, {
-      icon: {
-        name: 'mdi-movie',
-        color: iconConfig.color
-      },
+      icon: 'mdi-movie',
       title: 'Movies',
       sref: 'movies'
     }, {
-      icon: {
-        name: 'mdi-television',
-        color: iconConfig.color
-      },
+      icon: 'mdi-television',
       title: 'TV Shows',
       sref: 'tv-shows'
     }, {
-      icon: {
-        name: 'mdi-video',
-        color: iconConfig.color
-      },
+      icon: 'mdi-video',
       title: 'Videos',
       sref: 'videos'
+    }, {
+      icon: 'mdi-format-list-bulleted',
+      title: 'Playlist',
+      sref: 'playlist'
     }];
   
     $scope.open = function(state) {
       $state.go(state);
+      $mdSidenav('left').toggle();
     };
   }
 ]);

@@ -22,7 +22,7 @@ function createMainWindow() {
   mainWindow = new BrowserWindow({
     width: 1024, 
     height: 768,
-    frame: false,
+    frame: true,
     resizable: true,
     title: 'ReKodi',
     icon: __dirname+ '/assets/icon.png',
