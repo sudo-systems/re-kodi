@@ -39,7 +39,12 @@
     <script src="./scripts/app/controllers/tv-shows.js"></script>
     <script src="./scripts/app/controllers/videos.js"></script>
     <script src="./scripts/app/controllers/playlist.js"></script>
+    <script src="./scripts/app/controllers/settings.js"></script>
     <!-- end:Controllers -->
+    
+    <!-- app:Directives -->
+    <script src="./scripts/app/directives/update-title.js"></script>
+    <!-- end:Directives -->
     
     <!-- app:Services -->
     <!-- end:Services -->
@@ -50,7 +55,7 @@
         <md-button ng-click="toggleSidenav('left')" class="md-icon-button" aria-label="Menu">
           <i class="mdi mdi-menu"></i>
         </md-button>
-        <h1>ReKodi</h1>
+        <h1 rk-update-title></h1>
       </div>
     </md-toolbar>
     <div layout="row" flex>
@@ -59,10 +64,10 @@
           <h1 class="md-toolbar-tools">Menu</h1>
         </md-toolbar>
         <md-list ng-controller="MainMenuCtrl">
-          <md-item ng-repeat="item in items track by $index">
+          <md-item ng-repeat="item in menuItems track by $index" ng-if="item.name !== ''">
             <md-item-content>
-              <md-button ng-click="open(item.sref)" aria-label="{{item.title}}">
-                <i class="mdi" ng-class="item.icon"></i> {{item.title}}
+              <md-button ng-click="openPage(item.name)" aria-label="{{item.data.pageTitle}}">
+                <i class="mdi" ng-class="item.data.menuIcon"></i> {{item.data.pageTitle}}
               </md-button>
             </md-item-content>
           </md-item>
