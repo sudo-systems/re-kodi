@@ -4,6 +4,14 @@
     text-align: left;
     line-height: 40px;
     margin: 0;
+    
+    &.active {
+      color: #FE4881;
+      
+      .mdi {
+        color: #3852B8;
+      }
+    }
 
     .mdi {
       color: #666;

@@ -1,6 +1,7 @@
 ReKodi.controller('MainMenuCtrl', ['$scope', '$state', '$mdSidenav',
   function($scope, $state, $mdSidenav){
   $scope.menuItems = $state.get();
+  $scope.routerState = $state;
 
     $scope.openPage = function(stateName) {
       $state.go(stateName);

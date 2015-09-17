@@ -10,6 +10,13 @@ ReKodi.config(['$stateProvider', '$urlRouterProvider',
         pageTitle: 'Recently Added',
         menuIcon: 'mdi-newspaper'
       }
+    }).state('now-playing', {
+      url: '/now-playing',
+      templateUrl: 'views/partials/now-playing.html',
+      data : { 
+        pageTitle: 'Now playing',
+        menuIcon: 'mdi-play-box-outline'
+      }
     }).state('playlist', {
       url: '/playlist',
       templateUrl: 'views/partials/playlist.html',

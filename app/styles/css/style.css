@@ -3,6 +3,10 @@
   text-align: left;
   line-height: 40px;
   margin: 0; }
+  #mainMenu .md-button.active {
+    color: #FE4881; }
+    #mainMenu .md-button.active .mdi {
+      color: #3852B8; }
   #mainMenu .md-button .mdi {
     color: #666;
     font-size: 20px;
