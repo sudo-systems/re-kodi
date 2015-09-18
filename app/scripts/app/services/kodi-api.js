@@ -91,13 +91,6 @@ ReKodi.factory('KodiApiService', ['$rootScope', 'SettingsService', 'EVENTS',
     var getConnection = function() {
       return connection;
     };
-    
-    $rootScope.$on(EVENTS.CONNECTION_SETTINGS_CHANGED, function(event, connectionSettings) {
-      if(SettingsService.isConnectionConfigured()) {
-        connect();
-        console.log('connecting');
-      }
-    });
 
     return {
       connect: connect,
