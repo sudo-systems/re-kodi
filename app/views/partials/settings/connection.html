@@ -1,35 +1,42 @@
 <form name="connectionForm">
   <md-input-container>
-    <label>Host address</label>
-    <input required="true" name="hostAddress" ng-model="connection.hostAddress" />
+    <label>Host address *</label>
+    <input ng-required="true" type="text" name="hostAddress" ng-model="settings.connection.hostAddress" />
     <md-tooltip md-direction="bottom">
       Enter the address of your Kodi host (i.e. 192.168.1.10)
     </md-tooltip>
   </md-input-container>
   <md-input-container>
-    <label>JSON RPC port</label>
-    <input md-maxlength="4" required="true" type="number" step="any" name="jsonRpcPort" ng-model="connection.jsonRpcPort" min="10" max="9999" />
+    <label>JSON RPC port *</label>
+    <input ng-required="true" type="text" name="jsonRpcPort" ng-model="settings.connection.jsonRpcPort" />
     <md-tooltip md-direction="bottom">
-      Do not change this if you're not sure what you're doing (default is 9000)
+      Do not change this if you're not sure what you're doing (default is 9090)
     </md-tooltip>
   </md-input-container>
   <md-input-container>
-    <label>HTTP port</label>
-    <input md-maxlength="4" required="true" type="number" step="any" name="httpPort" ng-model="connection.httpPort" min="10" max="9999" />
+    <label>HTTP port *</label>
+    <input ng-required="true" type="text" name="httpPort" ng-model="settings.connection.httpPort" />
     <md-tooltip md-direction="bottom">
-      Required if you want to see thumbnails and fanart (default is 8080)
+      The default is 8080
+    </md-tooltip>
+  </md-input-container>
+  <md-input-container>
+    <label>MAC address</label>
+    <input ng-required="false" type="text" name="macAddress" ng-model="settings.connection.macAddress" />
+    <md-tooltip md-direction="bottom">
+      Enter the machines mac address to enable the 'Wake on LAN' feature (format 00:AA:BB:CC:DD:EE)
     </md-tooltip>
   </md-input-container>
   <md-input-container>
     <label>Username</label>
-    <input required="" type="text" name="username" ng-model="connection.username" />
+    <input ng-required="false" type="text" name="username" ng-model="settings.connection.username" />
     <md-tooltip md-direction="bottom">
       Username as configured in Kodi settings
     </md-tooltip>
   </md-input-container>
   <md-input-container>
     <label>Password</label>
-    <input required="" type="password" name="password" ng-model="connection.password" />
+    <input ng-required="false" type="password" name="password" ng-model="settings.connection.password" />
     <md-tooltip md-direction="bottom">
       Password as configured in Kodi settings
     </md-tooltip>

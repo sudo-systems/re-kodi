@@ -28,6 +28,7 @@
     <!-- app:ReKodi -->
     <script src="./scripts/app/app.js"></script>
     <script src="./scripts/app/config.js"></script>
+    <script src="./scripts/app/default-values.js"></script>
     <!-- end:ReKodi -->
     
     <!-- app:Controllers -->
@@ -49,12 +50,15 @@
     <!-- end:Directives -->
     
     <!-- app:Services -->
+    <script src="./scripts/app/services/config.js"></script>
+    <script src="./scripts/app/services/settings.js"></script>
+    <script src="./scripts/app/services/kodi-api.js"></script>
     <!-- end:Services -->
   </head>
   <body layout="column" ng-controller="AppCtrl">
     <md-toolbar layout="row">
       <div class="md-toolbar-tools">
-        <h2 rk-update-title></h2>
+        <h1 rk-update-title></h1>
         <span flex=""></span>
         <md-button class="md-icon-button" aria-label="Options">
           <i class="mdi mdi-dots-vertical"></i>

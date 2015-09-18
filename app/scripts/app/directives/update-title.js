@@ -6,7 +6,8 @@ ReKodi.directive('rkUpdateTitle', ['$rootScope', '$timeout',
           var title = (toState.data && toState.data.pageTitle)? toState.data.pageTitle : '';
 
           $timeout(function() {
-            element.text(title);
+            var icon = '<i class="mdi '+toState.data.menuIcon+'"></i> ';
+            element.html(icon+title);
           }, 0, false);
         };
 

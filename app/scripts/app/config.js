@@ -76,3 +76,12 @@ ReKodi.config(['$stateProvider', '$urlRouterProvider',
     });
   }
 ]);
+
+ReKodi.constant('PATH_CONFIG', {
+  SETTINGS_FILE: 'settings.json'
+});
+
+ReKodi.constant('EVENTS', {
+  CONNECTION_SETTINGS_CHANGED: 'connectionSettingsChanged',
+  CONNECTION_STATUS_CHANGED: 'connectionStatusChanged'
+});

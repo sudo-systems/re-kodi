@@ -31,8 +31,8 @@
   "dependencies": {
     "electron-prebuilt": "^0.32.3",
     "homedir": "^0.6.0",
+    "kodi-ws": "^2.3.0",
     "mkpath": "^0.1.0",
-    "node-kodi-ws": "^2.3.0",
     "node-notifier": "^4.2.3",
     "node-wol": "^0.1.1",
     "wallpaper": "^1.1.0"
