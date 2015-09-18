@@ -28,6 +28,7 @@ ReKodi.factory('KodiApiService', ['$rootScope', 'SettingsService', 'EVENTS',
     }
 
     var connect = function() {
+      $rootScope.$emit(EVENTS.CONNECTING, true);
       clearTimeout(retryConnectingTimeout);
 
       if(!SettingsService.isConnectionConfigured()) {
@@ -54,13 +55,15 @@ ReKodi.factory('KodiApiService', ['$rootScope', 'SettingsService', 'EVENTS',
     function setConnected(link) {
       connection = link;
       bindEvents(link);
-      $rootScope.$emit(EVENTS.CONNECTION_STATUS_CHANGED, connection);
+      $rootScope.$emit(EVENTS.CONNECTION_STATUS, connection);
+      $rootScope.$emit(EVENTS.CONNECTING, false);
     };
     
     function setDisconnected(error) {
       if(connection) {
         connection = null;
-        $rootScope.$emit(EVENTS.CONNECTION_STATUS_CHANGED, connection);
+        $rootScope.$emit(EVENTS.CONNECTION_STATUS, connection);
+        $rootScope.$emit(EVENTS.CONNECTING, false);
       }
       
       if(error) {

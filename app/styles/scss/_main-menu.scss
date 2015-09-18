@@ -1,21 +1,37 @@
 #mainMenu {
-  width: 50px;
+  width: 60px;
   background: #F6F6F6;
+  text-align: center;
   
   .md-button {
     min-width: 0;
-    margin: 0;
+    margin: 0 0 3px 0;
+    width: 42px;
+    height: 42px;
+    
+    &:hover {
+      .mdi {
+        font-size: 32px;
+      }
+    }
     
     &.active {
+      background-color: #607D8C;
+      width: 46px;
+      height: 46px;
+      
       .mdi {
-        color: #FE4881;
+        color: #FFF;
+        font-size: 32px;
+        line-height: 46px;
       }
     }
 
     .mdi {
-      color: #666;
+      color: #717171;
       font-size: 26px;
-      line-height: 48px;
+      width: 100%;
+      line-height: 42px;
     }
   }
 }

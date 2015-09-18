@@ -98,7 +98,12 @@
           </md-item>
         </md-list>
       </div>
-      <md-content layout="column" flex ui-view></md-content>
+      <md-content class="message-overlay" layout="column" flex layout-align="center center" ng-show="(isLoading || isConnecting) && !routerState.current.name !== 'settings'" ng-cloak>
+        <h4 ng-show="isConnecting" ng-cloak>Connecting...</h4>
+        <h4 ng-show="isLoading" ng-cloak>Loading data...</h4>
+      </md-content>
+      <md-content layout="column" flex ui-view ng-hide="isLoading || isConnecting"></md-content>
     </div>
+    <md-progress-linear md-mode="indeterminate" class="md-accent" ng-show="isLoading || isConnecting"></md-progress-linear>
   </body>
 </html>

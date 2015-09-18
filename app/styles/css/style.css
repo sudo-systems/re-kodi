@@ -1,15 +1,35 @@
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+  display: none !important; }
+
 #mainMenu {
-  width: 50px;
-  background: #F6F6F6; }
+  width: 60px;
+  background: #F6F6F6;
+  text-align: center; }
   #mainMenu .md-button {
     min-width: 0;
-    margin: 0; }
-    #mainMenu .md-button.active .mdi {
-      color: #FE4881; }
+    margin: 0 0 3px 0;
+    width: 42px;
+    height: 42px; }
+    #mainMenu .md-button:hover .mdi {
+      font-size: 32px; }
+    #mainMenu .md-button.active {
+      background-color: #607D8C;
+      width: 46px;
+      height: 46px; }
+      #mainMenu .md-button.active .mdi {
+        color: #FFF;
+        font-size: 32px;
+        line-height: 46px; }
     #mainMenu .md-button .mdi {
-      color: #666;
+      color: #717171;
       font-size: 26px;
-      line-height: 48px; }
+      width: 100%;
+      line-height: 42px; }
 
 md-tabs {
   background: #f6f6f6; }

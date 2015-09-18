@@ -1,5 +1,10 @@
-ReKodi.config(['$stateProvider', '$urlRouterProvider',
-  function($stateProvider, $urlRouterProvider) {
+ReKodi.config(['$stateProvider', '$urlRouterProvider', '$mdThemingProvider',
+  function($stateProvider, $urlRouterProvider, $mdThemingProvider) {
+    $mdThemingProvider.theme('default')
+      .primaryPalette('blue-grey')
+      .accentPalette('deep-orange');
+    
+    
     $urlRouterProvider.otherwise('/recently-added');
     
     $stateProvider
@@ -82,6 +87,8 @@ ReKodi.constant('PATH_CONFIG', {
 });
 
 ReKodi.constant('EVENTS', {
-  CONNECTION_SETTINGS_CHANGED: 'connectionSettingsChanged',
-  CONNECTION_STATUS_CHANGED: 'connectionStatusChanged'
+  CONNECTION_SETTINGS: 'connectionSettingsChanged',
+  CONNECTION_STATUS: 'connectionStatusChanged',
+  LOADING: 'loadingStatusChanged',
+  CONNECTING: 'connectingStatusChanged'
 });
