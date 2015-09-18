@@ -4,8 +4,8 @@
       <i class="mdi" ng-class="tab.icon"></i> {{tab.label}}
     </md-tab-label>
     <md-tab-body>
-      <md-content class="md-padding">
-        <div ng-include="tab.content"></div>
+      <md-content>
+        <div ng-include="tab.content" style="position: relative;"></div>
       </md-content>
     </md-tab-body>
   </md-tab>

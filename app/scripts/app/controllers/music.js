@@ -4,20 +4,30 @@ ReKodi.controller('MusicCtrl', ['$scope', '$timeout', 'KodiFilesService', 'EVENT
     $scope.levels = LEVELS;
     $scope.status = {
       files: {
-        currentLevel: LEVELS.SOURCES
+        level: LEVELS.SOURCES,
+        directory: null
       },
       library: {
-        currentLevel: LEVELS.ARTISTS
+        level: LEVELS.ARTISTS,
+        artists: null,
+        album: null
       },
       addons: {
-        currentLevel: LEVELS.ADDONS
+        level: LEVELS.ADDONS,
+        addon: null
       }
     };
+    
     $scope.data = {
-      files: [],
-      library: [],
-      addons: []
+      sources: [],
+      directories: {},
+      artists: [],
+      albums: {},
+      songs: {},
+      addons: [],
+      addon: {}
     };
+    
     $scope.tabs = [{
       icon: 'mdi-format-list-bulleted',
       label: 'Library',
@@ -56,13 +66,13 @@ ReKodi.controller('MusicCtrl', ['$scope', '$timeout', 'KodiFilesService', 'EVENT
       });
       
       sources.then(function(data) {
-        $scope.data.files = (data.sources)? data.sources : [];
+        $scope.data.sources = (data.sources)? data.sources : [];
       }, function(error) {
         console.dir(error);
       });
       
       artists.then(function(data) {
-        $scope.data.library = (data.artists)? data.artists : [];
+        $scope.data.artists = (data.artists)? data.artists : [];
       }, function(error) {
         console.dir(error);
       });

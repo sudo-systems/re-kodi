@@ -84,7 +84,6 @@
         </md-button>
       </div>
     </md-toolbar>
-  <md-progress-linear md-mode="indeterminate" class="md-accent" ng-show="isLoading || isConnecting"></md-progress-linear>
     <div layout="row" flex>
       <div layout="column" id="mainMenu">
         <md-list ng-controller="MainMenuCtrl">
@@ -105,5 +104,6 @@
       </md-content>
       <md-content layout="column" flex ui-view ng-hide="isConnecting"></md-content>
     </div>
+    <md-progress-linear layout="row" md-mode="indeterminate" class="md-accent" ng-show="isLoading || isConnecting"></md-progress-linear>
   </body>
 </html>
