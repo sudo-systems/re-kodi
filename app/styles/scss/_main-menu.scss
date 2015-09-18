@@ -8,22 +8,20 @@
     margin: 0 0 3px 0;
     width: 42px;
     height: 42px;
+    @include transition(all .25s ease-in-out);
     
     &:hover {
       .mdi {
-        font-size: 32px;
+        color: #607D8C;
       }
     }
     
     &.active {
       background-color: #607D8C;
-      width: 46px;
-      height: 46px;
+      @include transform(scale(1.1));
       
       .mdi {
         color: #FFF;
-        font-size: 32px;
-        line-height: 46px;
       }
     }
 
@@ -32,6 +30,7 @@
       font-size: 26px;
       width: 100%;
       line-height: 42px;
+      @include transition(all .25s ease-in-out);
     }
   }
 }

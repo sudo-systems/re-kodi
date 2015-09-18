@@ -8,3 +8,13 @@ ReKodi.value('defaultSettings', {
     password: ''
   }
 });
+
+ReKodi.value('requestProperties', {
+  files: {
+    video: ['file', 'thumbnail', 'genre', 'plotoutline', 'rating', 'year'],
+    audio: ['file']
+  },
+  addons: {
+    audio: ['name', 'summary', 'thumbnail', 'fanart', 'enabled']
+  }
+});

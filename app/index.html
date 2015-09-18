@@ -53,6 +53,7 @@
     <script src="./scripts/app/services/config.js"></script>
     <script src="./scripts/app/services/settings.js"></script>
     <script src="./scripts/app/services/kodi-api.js"></script>
+    <script src="./scripts/app/services/kodi-files.js"></script>
     <!-- end:Services -->
   </head>
   <body layout="column" ng-controller="AppCtrl">
@@ -83,6 +84,7 @@
         </md-button>
       </div>
     </md-toolbar>
+  <md-progress-linear md-mode="indeterminate" class="md-accent" ng-show="isLoading || isConnecting"></md-progress-linear>
     <div layout="row" flex>
       <div layout="column" id="mainMenu">
         <md-list ng-controller="MainMenuCtrl">
@@ -98,12 +100,10 @@
           </md-item>
         </md-list>
       </div>
-      <md-content class="message-overlay" layout="column" flex layout-align="center center" ng-show="(isLoading || isConnecting) && !routerState.current.name !== 'settings'" ng-cloak>
-        <h4 ng-show="isConnecting" ng-cloak>Connecting...</h4>
-        <h4 ng-show="isLoading" ng-cloak>Loading data...</h4>
+      <md-content class="message-overlay" layout="column" flex layout-align="center center" ng-show="isConnecting && !routerState.current.name !== 'settings'" ng-cloak>
+        <h4>Connecting...</h4>
       </md-content>
-      <md-content layout="column" flex ui-view ng-hide="isLoading || isConnecting"></md-content>
+      <md-content layout="column" flex ui-view ng-hide="isConnecting"></md-content>
     </div>
-    <md-progress-linear md-mode="indeterminate" class="md-accent" ng-show="isLoading || isConnecting"></md-progress-linear>
   </body>
 </html>

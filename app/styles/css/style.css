@@ -14,22 +14,29 @@
     min-width: 0;
     margin: 0 0 3px 0;
     width: 42px;
-    height: 42px; }
+    height: 42px;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out; }
     #mainMenu .md-button:hover .mdi {
-      font-size: 32px; }
+      color: #607D8C; }
     #mainMenu .md-button.active {
       background-color: #607D8C;
-      width: 46px;
-      height: 46px; }
+      -webkit-transform: scale(1.1);
+      -moz-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+      -o-transform: scale(1.1);
+      transform: scale(1.1); }
       #mainMenu .md-button.active .mdi {
-        color: #FFF;
-        font-size: 32px;
-        line-height: 46px; }
+        color: #FFF; }
     #mainMenu .md-button .mdi {
       color: #717171;
       font-size: 26px;
       width: 100%;
-      line-height: 42px; }
+      line-height: 42px;
+      -webkit-transition: all 0.25s ease-in-out;
+      -moz-transition: all 0.25s ease-in-out;
+      transition: all 0.25s ease-in-out; }
 
 md-tabs {
   background: #f6f6f6; }

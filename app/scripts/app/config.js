@@ -92,3 +92,31 @@ ReKodi.constant('EVENTS', {
   LOADING: 'loadingStatusChanged',
   CONNECTING: 'connectingStatusChanged'
 });
+
+ReKodi.constant('LEVELS', {
+  SOURCES: 'sources',
+  DIRECTORY: 'directory',
+  ARTISTS: 'artists',
+  ALBUMS: 'albums',
+  SONGS: 'songs',
+  TV_SHOWS: 'tvShows',
+  SEASONS: 'seasons',
+  EPISODES: 'episodes',
+  ADDONS: 'addons',
+  ADDON: 'addon'
+});
+
+ReKodi.constant('KODI_ENUMS', {
+  FILES: 'files',
+  VIDEO: 'video',
+  AUDIO: 'audio',
+  MUSIC: 'music',
+  PICTURES: 'pictures',
+  AUDIO_PLAYER_ID: 0,
+  VIDEO_PLAYER_ID: 1,
+  AUDIO_PLAYLIST_ID: 0,
+  VIDEO_PLAYLIST_ID: 1,
+  AUDIO_ADDONS: 'xbmc.addon.audio',
+  VIDEO_ADDONS: 'xbmc.addon.video',
+  PICTURE_ADDONS: 'xbmc.addon.image'
+});
