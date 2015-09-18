@@ -1,0 +1,37 @@
+<form name="connectionForm">
+  <md-input-container>
+    <label>Host address</label>
+    <input required="true" name="hostAddress" ng-model="connection.hostAddress" />
+    <md-tooltip md-direction="bottom">
+      Enter the address of your Kodi host (i.e. 192.168.1.10)
+    </md-tooltip>
+  </md-input-container>
+  <md-input-container>
+    <label>JSON RPC port</label>
+    <input md-maxlength="4" required="true" type="number" step="any" name="jsonRpcPort" ng-model="connection.jsonRpcPort" min="10" max="9999" />
+    <md-tooltip md-direction="bottom">
+      Do not change this if you're not sure what you're doing (default is 9000)
+    </md-tooltip>
+  </md-input-container>
+  <md-input-container>
+    <label>HTTP port</label>
+    <input md-maxlength="4" required="true" type="number" step="any" name="httpPort" ng-model="connection.httpPort" min="10" max="9999" />
+    <md-tooltip md-direction="bottom">
+      Required if you want to see thumbnails and fanart (default is 8080)
+    </md-tooltip>
+  </md-input-container>
+  <md-input-container>
+    <label>Username</label>
+    <input required="" type="text" name="username" ng-model="connection.username" />
+    <md-tooltip md-direction="bottom">
+      Username as configured in Kodi settings
+    </md-tooltip>
+  </md-input-container>
+  <md-input-container>
+    <label>Password</label>
+    <input required="" type="password" name="password" ng-model="connection.password" />
+    <md-tooltip md-direction="bottom">
+      Password as configured in Kodi settings
+    </md-tooltip>
+  </md-input-container>
+</form>

@@ -1,22 +1,21 @@
 #mainMenu {
+  width: 50px;
+  background: #F6F6F6;
+  
   .md-button {
-    width: 100%;
-    text-align: left;
-    line-height: 40px;
+    min-width: 0;
     margin: 0;
     
     &.active {
-      color: #FE4881;
-      
       .mdi {
-        color: #3852B8;
+        color: #FE4881;
       }
     }
 
     .mdi {
       color: #666;
-      font-size: 20px;
-      margin-right: 6px;
+      font-size: 26px;
+      line-height: 48px;
     }
   }
 }
