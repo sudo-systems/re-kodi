@@ -1,3 +1,7 @@
+html,
+body {
+  overflow: hidden; }
+
 [ng\:cloak],
 [ng-cloak],
 [data-ng-cloak],
@@ -39,6 +43,21 @@
       transition: all 0.25s ease-in-out; }
 
 md-tabs {
-  background: #f6f6f6; }
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; }
+  md-tabs md-tabs-wrapper {
+    background: #f6f6f6; }
+  md-tabs md-tab-content [md-tabs-template] {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; }
+    md-tabs md-tab-content [md-tabs-template] .tab-container {
+      position: relative;
+      height: 100%; }
 
 /*# sourceMappingURL=style.css.map */

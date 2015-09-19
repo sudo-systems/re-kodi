@@ -10,6 +10,7 @@ ReKodi.controller('MusicCtrl', ['$scope', '$timeout', 'KodiFilesService', 'EVENT
       library: {
         level: LEVELS.ARTISTS,
         artists: null,
+        artistsIndex: null,
         album: null
       },
       addons: {
@@ -21,7 +22,8 @@ ReKodi.controller('MusicCtrl', ['$scope', '$timeout', 'KodiFilesService', 'EVENT
     $scope.data = {
       sources: [],
       directories: {},
-      artists: [],
+      artists: {},
+      artistsIndex: [],
       albums: {},
       songs: {},
       addons: [],
@@ -42,6 +44,27 @@ ReKodi.controller('MusicCtrl', ['$scope', '$timeout', 'KodiFilesService', 'EVENT
       content: 'views/partials/music/addons.html'
     }];
   
+    function getDefaultIndex(artistsIndex) {
+      for(var key in artistsIndex) {
+        if(artistsIndex[key] !== 'null' && artistsIndex[key].toLowerCase() !== artistsIndex[key].toUpperCase()) {
+          return artistsIndex[key];
+        }
+      }
+      
+      return null;
+    }
+  
+    function setArtists(artists) { 
+      for(var key in artists) {
+        var firstLetter = artists[key].label.charAt(0).toUpperCase();
+        if($scope.data.artists[firstLetter] === undefined) $scope.data.artists[firstLetter] = [];
+        $scope.data.artists[firstLetter].push(artists[key]);
+      }
+
+      $scope.data.artistsIndex = Object.keys($scope.data.artists);
+      $scope.status.library.artistsIndex = getDefaultIndex($scope.data.artistsIndex);
+    }
+  
     $scope.getInitalData = function() {
       if(!kodiApi) return;
       $scope.$root.$emit(EVENTS.LOADING, true);
@@ -54,7 +77,7 @@ ReKodi.controller('MusicCtrl', ['$scope', '$timeout', 'KodiFilesService', 'EVENT
         }
       });
       var artists = batch.AudioLibrary.GetArtists({
-        albumartistsonly: false,
+        albumartistsonly: true,
         sort: {
           order: 'ascending',
           method: 'label'
@@ -72,7 +95,8 @@ ReKodi.controller('MusicCtrl', ['$scope', '$timeout', 'KodiFilesService', 'EVENT
       });
       
       artists.then(function(data) {
-        $scope.data.artists = (data.artists)? data.artists : [];
+        data.artists = (data.artists)? data.artists : [];
+        setArtists(data.artists);
       }, function(error) {
         console.dir(error);
       });
