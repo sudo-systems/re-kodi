@@ -1,7 +1,8 @@
-ReKodi.controller('MusicCtrl', ['$scope', '$timeout', 'KodiFilesService', 'EVENTS', 'LEVELS', 'KODI_ENUMS', 'KodiApiService', 'requestProperties',
-  function($scope, $timeout, KodiFilesService, EVENTS, LEVELS, KODI_ENUMS, KodiApiService, requestProperties){
+ReKodi.controller('MusicCtrl', ['$scope', '$timeout', '$state', '$stateParams', 'KodiFilesService', 'EVENTS', 'LEVELS', 'KODI_ENUMS', 'KodiApiService', 'requestProperties',
+  function($scope, $timeout, $state, $stateParams, KodiFilesService, EVENTS, LEVELS, KODI_ENUMS, KodiApiService, requestProperties){
     var kodiApi, isInitialized;
     $scope.levels = LEVELS;
+    $scope.tabIndex = $stateParams.tabIndex;
     $scope.status = {
       files: {
         level: LEVELS.SOURCES,
@@ -45,6 +46,10 @@ ReKodi.controller('MusicCtrl', ['$scope', '$timeout', 'KodiFilesService', 'EVENT
     }];
   
     function getDefaultIndex(artistsIndex) {
+      if($stateParams.displayIndex !== null) {
+        return $stateParams.displayIndex;
+      }
+      
       for(var key in artistsIndex) {
         if(artistsIndex[key] !== 'null' && artistsIndex[key].toLowerCase() !== artistsIndex[key].toUpperCase()) {
           return artistsIndex[key];
@@ -64,6 +69,12 @@ ReKodi.controller('MusicCtrl', ['$scope', '$timeout', 'KodiFilesService', 'EVENT
       $scope.data.artistsIndex = Object.keys($scope.data.artists);
       $scope.status.library.artistsIndex = getDefaultIndex($scope.data.artistsIndex);
     }
+    
+    $scope.setActiveTab = function(index) {
+      $state.go('music', {
+        tabIndex: index
+      });
+    };
   
     $scope.getInitalData = function() {
       if(!kodiApi) return;
@@ -120,6 +131,14 @@ ReKodi.controller('MusicCtrl', ['$scope', '$timeout', 'KodiFilesService', 'EVENT
       $scope.$root.$on(EVENTS.CONNECTION_STATUS, function (event, connection) {
         kodiApi = connection;
         if(!isInitialized) $scope.getInitalData();
+      });
+      
+      $scope.$watch('status.library.artistsIndex', function(newValue, oldValue) {
+        if(newValue === null || newValue === oldValue) return;
+        
+        /*$state.go('music', {
+          displayIndex: newValue
+        });*/
       });
     }
     

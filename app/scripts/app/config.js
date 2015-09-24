@@ -18,9 +18,23 @@ ReKodi.config(['$stateProvider', '$urlRouterProvider', '$mdThemingProvider',
     }).state('music', {
       url: '/music',
       templateUrl: 'views/partials/music.html',
+      params: {
+        tabIndex: 0,
+        displayIndex: null
+      },
       data : { 
         pageTitle: 'Music',
         menuIcon: 'mdi-music-box-outline'
+      },
+      deepStateRedirect: {
+        default: { 
+          state: 'music', 
+          params: { 
+            tabIndex: 0,
+            displayIndex: null
+          } 
+        },
+        params: true
       }
     }).state('movies', {
       url: '/movies',
