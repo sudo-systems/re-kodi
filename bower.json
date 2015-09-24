@@ -1,6 +1,6 @@
 {
   "name": "re-kodi",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "authors": [
     "Bram van Oploo <bram@sudo-systems.com>"
   ],
@@ -28,7 +28,7 @@
   "dependencies": {
     "angular": "angularjs#~1.4.5",
     "angular-material": "master",
-    "angular-su-endless-scroll": "~1.1.1",
+    "angular-su-endless-scroll": "~1.2.0",
     "angular-ui-router": "~0.2.15",
     "bourbon": "~4.2.5",
     "mdi": "~1.2.65"
