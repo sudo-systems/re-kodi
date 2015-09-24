@@ -1,8 +1,10 @@
-<div class="su-endless-scroll-fill" 
-  su-endless-scroll="data.artists[status.library.artistsIndex]" 
-  su-endless-scroll-limit="30" 
-  su-endless-scroll-offset="50">
-  <div ng-repeat="artist in suEndlessScrollItems track by $index">
-    <i class="mdi mdi-account"></i> {{::artist.label}}
+<md-subheader class="md-primary">
+  <md-select ng-model="status.library.artistsIndex" aria-label="Index">
+    <md-option ng-repeat="indexChar in data.artistsIndex track by $index" ng-value="indexChar">{{indexChar}}</md-option>
+  </md-select>
+</md-subheader>
+<md-content>
+  <div ng-repeat="artist in data.artists[status.library.artistsIndex] track by $index">
+    <i class="mdi mdi-account"></i> {{artist.label}}
   </div>
-</div>
+</md-content>
