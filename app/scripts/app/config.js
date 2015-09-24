@@ -16,10 +16,10 @@ ReKodi.config(['$stateProvider', '$urlRouterProvider', '$mdThemingProvider',
         menuIcon: 'mdi-newspaper'
       }
     }).state('music', {
-      url: '/music',
+      url: '/music/:tabIndex/:displayIndex',
       templateUrl: 'views/partials/music.html',
       params: {
-        tabIndex: 0,
+        tabIndex: '0',
         displayIndex: null
       },
       data : { 
@@ -30,11 +30,14 @@ ReKodi.config(['$stateProvider', '$urlRouterProvider', '$mdThemingProvider',
         default: { 
           state: 'music', 
           params: { 
-            tabIndex: 0,
+            tabIndex: '0',
             displayIndex: null
           } 
         },
-        params: true
+        params: true,
+        fn: function($dsr$) {
+          return true;
+        }
       }
     }).state('movies', {
       url: '/movies',

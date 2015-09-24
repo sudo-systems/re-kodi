@@ -136,9 +136,9 @@ ReKodi.controller('MusicCtrl', ['$scope', '$timeout', '$state', '$stateParams', 
       $scope.$watch('status.library.artistsIndex', function(newValue, oldValue) {
         if(newValue === null || newValue === oldValue) return;
         
-        /*$state.go('music', {
+        $state.go('music', {
           displayIndex: newValue
-        });*/
+        });
       });
     }
     
