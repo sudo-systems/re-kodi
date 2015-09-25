@@ -26,6 +26,7 @@
     <script src="../bower_components/angular-su-endless-scroll/su-endless-scroll.min.js"></script>
     <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="../bower_components/ui-router-extras/release/ct-ui-router-extras.js"></script>
+    <script src="../bower_components/ngstorage/ngStorage.js"></script>
     <!-- endbower -->
     
     <!-- app:ReKodi -->
@@ -55,6 +56,7 @@
     <!-- app:Services -->
     <script src="./scripts/app/services/config.js"></script>
     <script src="./scripts/app/services/settings.js"></script>
+    <script src="./scripts/app/services/state-params-storage.js"></script>
     <script src="./scripts/app/services/kodi-api.js"></script>
     <script src="./scripts/app/services/kodi-files.js"></script>
     <!-- end:Services -->
@@ -88,7 +90,7 @@
       </div>
     </md-toolbar>
     <div layout="row" flex>
-      <div layout="column" id="mainMenu">
+      <div layout="column" id="mainMenu" ng-show="isConnected">
         <md-list ng-controller="MainMenuCtrl">
           <md-item ng-repeat="item in menuItems track by $index" ng-if="item.name !== ''">
             <md-item-content>

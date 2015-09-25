@@ -14,3 +14,7 @@ release-patch: lint
 
 publish:
 	git push --tags origin HEAD:master
+
+install-dev:
+	bower install
+	npm install

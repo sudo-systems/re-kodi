@@ -1,5 +1,5 @@
-ReKodi.controller('AppCtrl', ['$scope', '$timeout', '$state', 'KodiApiService', 'SettingsService', 'EVENTS',
-  function($scope, $timeout, $state, KodiApiService, SettingsService, EVENTS){
+ReKodi.controller('AppCtrl', ['$scope', '$timeout', '$state', 'KodiApiService', 'SettingsService', 'EVENTS', 'StateParamsStorage',
+  function($scope, $timeout, $state, KodiApiService, SettingsService, EVENTS, StateParamsStorage){
     var remote = require('remote');
     var Menu = remote.require('menu');
     var MenuItem = remote.require('menu-item');
@@ -46,6 +46,11 @@ ReKodi.controller('AppCtrl', ['$scope', '$timeout', '$state', 'KodiApiService', 
       
       $scope.$root.$on(EVENTS.CONNECTING, function(event, isConnecting) {
         $scope.isConnecting = isConnecting;
+        apply();
+      });
+
+      $scope.$root.$on(EVENTS.CONNECTION_STATUS, function(event, connection) {
+        $scope.isConnected = (connection);
         apply();
       });
     }

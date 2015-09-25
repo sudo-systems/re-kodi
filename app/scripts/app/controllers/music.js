@@ -1,5 +1,5 @@
-ReKodi.controller('MusicCtrl', ['$scope', '$timeout', '$state', '$stateParams', 'KodiFilesService', 'EVENTS', 'LEVELS', 'KODI_ENUMS', 'KodiApiService', 'requestProperties',
-  function($scope, $timeout, $state, $stateParams, KodiFilesService, EVENTS, LEVELS, KODI_ENUMS, KodiApiService, requestProperties){
+ReKodi.controller('MusicCtrl', ['$scope', '$timeout', '$state', '$stateParams', '$localStorage', 'KodiFilesService', 'EVENTS', 'LEVELS', 'KODI_ENUMS', 'KodiApiService', 'requestProperties',
+  function($scope, $timeout, $state, $stateParams, $localStorage, KodiFilesService, EVENTS, LEVELS, KODI_ENUMS, KodiApiService, requestProperties){
     var kodiApi, isInitialized;
     $scope.levels = LEVELS;
     $scope.tabIndex = $stateParams.tabIndex;
@@ -51,7 +51,7 @@ ReKodi.controller('MusicCtrl', ['$scope', '$timeout', '$state', '$stateParams', 
       }
       
       for(var key in artistsIndex) {
-        if(artistsIndex[key] !== 'null' && artistsIndex[key].toLowerCase() !== artistsIndex[key].toUpperCase()) {
+        if(artistsIndex.hasOwnProperty(key) && artistsIndex[key].toLowerCase() !== artistsIndex[key].toUpperCase()) {
           return artistsIndex[key];
         }
       }
@@ -71,11 +71,12 @@ ReKodi.controller('MusicCtrl', ['$scope', '$timeout', '$state', '$stateParams', 
     }
     
     $scope.setActiveTab = function(index) {
-      $state.go('music', {
-        tabIndex: index
+      $state.transitionTo($state.current.name, {
+        tabIndex: index,
+        displayIndex: $stateParams.displayIndex
       });
     };
-  
+
     $scope.getInitalData = function() {
       if(!kodiApi) return;
       $scope.$root.$emit(EVENTS.LOADING, true);
@@ -123,20 +124,26 @@ ReKodi.controller('MusicCtrl', ['$scope', '$timeout', '$state', '$stateParams', 
       batch.send();
       isInitialized = true;
     };
+
     
-    function init() {   
+    function init() {
       kodiApi = KodiApiService.getConnection();
       $scope.getInitalData();
         
       $scope.$root.$on(EVENTS.CONNECTION_STATUS, function (event, connection) {
         kodiApi = connection;
-        if(!isInitialized) $scope.getInitalData();
+        if(!isInitialized) {
+          $scope.getInitalData();
+        }
       });
       
       $scope.$watch('status.library.artistsIndex', function(newValue, oldValue) {
-        if(newValue === null || newValue === oldValue) return;
-        
-        $state.go('music', {
+        if(newValue === null || newValue === oldValue) {
+          return;
+        }
+
+        $state.transitionTo($state.current.name, {
+          tabIndex: $stateParams.tabIndex,
           displayIndex: newValue
         });
       });
