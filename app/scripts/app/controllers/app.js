@@ -1,5 +1,5 @@
-ReKodi.controller('AppCtrl', ['$scope', '$timeout', '$state', 'KodiApiService', 'SettingsService', 'EVENTS', 'StateParamsStorage',
-  function($scope, $timeout, $state, KodiApiService, SettingsService, EVENTS, StateParamsStorage){
+ReKodi.controller('AppCtrl', ['$scope', '$timeout', '$state', 'KodiApiService', 'SettingsService', 'EVENTS',
+  function($scope, $timeout, $state, KodiApiService, SettingsService, EVENTS){
     var remote = require('remote');
     var Menu = remote.require('menu');
     var MenuItem = remote.require('menu-item');

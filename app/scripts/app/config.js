@@ -19,7 +19,7 @@ ReKodi.config(['$stateProvider', '$urlRouterProvider', '$mdThemingProvider',
       url: '/music/:tabIndex/:displayIndex',
       templateUrl: 'views/partials/music.html',
       params: {
-        tabIndex: '0',
+        activeTab: '0',
         displayIndex: null
       },
       data : { 

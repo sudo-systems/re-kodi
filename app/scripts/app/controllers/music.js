@@ -1,8 +1,8 @@
-ReKodi.controller('MusicCtrl', ['$scope', '$timeout', '$state', '$stateParams', '$localStorage', 'KodiFilesService', 'EVENTS', 'LEVELS', 'KODI_ENUMS', 'KodiApiService', 'requestProperties',
-  function($scope, $timeout, $state, $stateParams, $localStorage, KodiFilesService, EVENTS, LEVELS, KODI_ENUMS, KodiApiService, requestProperties){
+ReKodi.controller('MusicCtrl', ['$scope', '$timeout', '$state', '$stateParams', '$localStorage', 'KodiFilesService', 'EVENTS', 'LEVELS', 'KODI_ENUMS', 'KodiApiService', 'requestProperties', 'PersitentState',
+  function($scope, $timeout, $state, $stateParams, $localStorage, KodiFilesService, EVENTS, LEVELS, KODI_ENUMS, KodiApiService, requestProperties, PersitentState){
     var kodiApi, isInitialized;
     $scope.levels = LEVELS;
-    $scope.tabIndex = $stateParams.tabIndex;
+    $scope.activeTab = $stateParams.activeTab;
     $scope.status = {
       files: {
         level: LEVELS.SOURCES,
@@ -69,13 +69,6 @@ ReKodi.controller('MusicCtrl', ['$scope', '$timeout', '$state', '$stateParams', 
       $scope.data.artistsIndex = Object.keys($scope.data.artists);
       $scope.status.library.artistsIndex = getDefaultIndex($scope.data.artistsIndex);
     }
-    
-    $scope.setActiveTab = function(index) {
-      $state.transitionTo($state.current.name, {
-        tabIndex: index,
-        displayIndex: $stateParams.displayIndex
-      });
-    };
 
     $scope.getInitalData = function() {
       if(!kodiApi) return;
@@ -142,10 +135,10 @@ ReKodi.controller('MusicCtrl', ['$scope', '$timeout', '$state', '$stateParams', 
           return;
         }
 
-        $state.transitionTo($state.current.name, {
-          tabIndex: $stateParams.tabIndex,
+        PersitentState.go($state.current.name, {
+          activeTab: $stateParams.activeTab,
           displayIndex: newValue
-        });
+        }, true);
       });
     }
     

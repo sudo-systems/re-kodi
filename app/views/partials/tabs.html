@@ -1,12 +1,12 @@
-<md-tabs md-selected="tabIndex" md-dynamic-height="false" md-swipe-content="true">
-  <md-tab ng-repeat="tab in tabs track by $index">
-    <md-tab-label>
-      <div ng-click="setActiveTab($index)">
+<div ng-controller="TabsCtrl">
+  <md-tabs md-selected="tabIndex" md-dynamic-height="false" md-swipe-content="true">
+    <md-tab ng-repeat="tab in tabs track by $index" md-on-select="saveActiveTab($index)">
+      <md-tab-label>
         <i class="mdi" ng-class="tab.icon"></i> {{tab.label}}
-      </div>
-    </md-tab-label>
-    <md-tab-body>
-      <div ng-include="tab.content" class="tab-container" layout="column" flex="" layout-fill=""></div>
-    </md-tab-body>
-  </md-tab>
-</md-tabs>
+      </md-tab-label>
+      <md-tab-body>
+        <div ng-include="tab.content" class="tab-container" layout="column" flex="" layout-fill=""></div>
+      </md-tab-body>
+    </md-tab>
+  </md-tabs>
+</div>
